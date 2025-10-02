@@ -16,6 +16,7 @@ interface YTranscriptSettings {
 	lang: string;
 	country: string;
 	leafUrls: string[];
+	template: string; 
 }
 
 const DEFAULT_SETTINGS: YTranscriptSettings = {
@@ -23,6 +24,7 @@ const DEFAULT_SETTINGS: YTranscriptSettings = {
 	lang: "en",
 	country: "EN",
 	leafUrls: [],
+	template: "[{{timestamp}}]({{link}}) - {{text}}",
 };
 
 export default class YTranscriptPlugin extends Plugin {
@@ -154,6 +156,18 @@ class YTranslateSettingTab extends PluginSettingTab {
 					.setValue(this.plugin.settings.country)
 					.onChange(async (value) => {
 						this.plugin.settings.country = value;
+						await this.plugin.saveSettings();
+					}),
+			);
+
+		new Setting(containerEl)
+			.setName("Transcript template")
+			.setDesc("Use placeholders: {{timestamp}}, {{link}}, {{text}}")
+			.addTextArea((text) =>
+				text
+					.setValue(this.plugin.settings.template)
+					.onChange(async (value) => {
+						this.plugin.settings.template = value;
 						await this.plugin.saveSettings();
 					}),
 			);

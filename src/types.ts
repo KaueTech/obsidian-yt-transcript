@@ -16,6 +16,7 @@ export class YoutubeTranscriptError extends Error {
 export interface TranscriptConfig {
 	lang?: string;
 	country?: string;
+	template?: string;
 }
 
 export interface TranscriptResponse {

@@ -2,7 +2,6 @@ import { Editor } from "obsidian";
 import { URLDetector } from "../url-detection";
 import {
 	TranscriptFormatter,
-	FormatTemplate,
 	FormatOptions,
 } from "../transcript-formatter";
 import { YoutubeTranscript } from "../youtube-transcript";
@@ -11,7 +10,7 @@ import { EditorExtensions } from "../../editor-extensions";
 import { TranscriptConfig } from "../types";
 
 export interface InsertTranscriptOptions {
-	template?: FormatTemplate;
+	template?: string;
 	timestampMod?: number;
 }
 
@@ -46,6 +45,7 @@ export class InsertTranscriptCommand {
 
 			// Fetch transcript
 			const transcriptConfig = this.createTranscriptConfig();
+			
 			const transcript = await YoutubeTranscript.getTranscript(
 				url,
 				transcriptConfig,
@@ -62,6 +62,7 @@ export class InsertTranscriptCommand {
 
 			// Format transcript
 			const formatOptions = this.mergeFormatOptions(options);
+			
 			const formattedContent = TranscriptFormatter.format(
 				transcript,
 				url,
@@ -162,6 +163,7 @@ export class InsertTranscriptCommand {
 		return {
 			lang: this.plugin.settings?.lang,
 			country: this.plugin.settings?.country,
+			template: this.plugin.settings?.template,
 		};
 	}
 
@@ -171,8 +173,10 @@ export class InsertTranscriptCommand {
 	private mergeFormatOptions(
 		options: InsertTranscriptOptions,
 	): FormatOptions {
+
+		
 		return {
-			template: options.template || FormatTemplate.STANDARD,
+			template: options.template || "",
 			timestampMod:
 				options.timestampMod || this.plugin.settings?.timestampMod || 5,
 		};
