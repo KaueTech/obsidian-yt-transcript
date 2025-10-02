@@ -1,7 +1,6 @@
 import {
 	TranscriptFormatter,
 	FormatOptions,
-	FormatTemplate,
 } from "../src/transcript-formatter";
 import { TranscriptResponse } from "../src/types";
 
@@ -32,7 +31,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 5,
-						template: FormatTemplate.MINIMAL,
+						template: "FormatTemplate.MINIMAL",
 					},
 				);
 				expect(result).toBe(
@@ -54,7 +53,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 1,
-						template: FormatTemplate.MINIMAL,
+						template: "FormatTemplate.MINIMAL",
 					},
 				);
 				expect(result).toBe("First Second Third");
@@ -73,7 +72,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 1,
-						template: FormatTemplate.MINIMAL,
+						template: "FormatTemplate.MINIMAL",
 					},
 				);
 				expect(result).toBe("Spaced Text");
@@ -87,7 +86,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 2,
-						template: FormatTemplate.STANDARD,
+						template: "FormatTemplate.STANDARD",
 					},
 				);
 
@@ -116,7 +115,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 1,
-						template: FormatTemplate.STANDARD,
+						template: "FormatTemplate.STANDARD",
 					},
 				);
 
@@ -131,7 +130,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 2,
-						template: FormatTemplate.STANDARD,
+						template: "FormatTemplate.STANDARD",
 					},
 				);
 
@@ -150,7 +149,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 3,
-						template: FormatTemplate.STANDARD,
+						template: "FormatTemplate.STANDARD",
 					},
 				);
 
@@ -171,7 +170,7 @@ describe("TranscriptFormatter", () => {
 					urlWithParams,
 					{
 						timestampMod: 2,
-						template: FormatTemplate.STANDARD,
+						template: "FormatTemplate.STANDARD",
 					},
 				);
 
@@ -187,7 +186,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 2,
-						template: FormatTemplate.RICH,
+						template: "FormatTemplate.RICH",
 					},
 				);
 				expect(result).toContain("## Test Video Title");
@@ -199,7 +198,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 2,
-						template: FormatTemplate.RICH,
+						template: "FormatTemplate.RICH",
 					},
 				);
 				expect(result).toContain(
@@ -213,7 +212,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 2,
-						template: FormatTemplate.RICH,
+						template: "FormatTemplate.RICH",
 					},
 				);
 				const today = new Date().toISOString().split("T")[0];
@@ -226,7 +225,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 2,
-						template: FormatTemplate.RICH,
+						template: "FormatTemplate.RICH",
 					},
 				);
 
@@ -255,7 +254,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 1,
-						template: FormatTemplate.RICH,
+						template: "FormatTemplate.RICH",
 					},
 				);
 				expect(result).toContain("## YouTube Transcript");
@@ -273,7 +272,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 1,
-						template: FormatTemplate.RICH,
+						template: "FormatTemplate.RICH",
 					},
 				);
 				expect(result).toContain("## YouTube Transcript");
@@ -314,7 +313,7 @@ describe("TranscriptFormatter", () => {
 			it("should apply timestampMod correctly across all templates", () => {
 				const optionsWithMod: FormatOptions = {
 					timestampMod: 2,
-					template: FormatTemplate.STANDARD,
+					template: "FormatTemplate.STANDARD",
 				};
 				const result = TranscriptFormatter.format(
 					mockTranscriptResponse,
@@ -339,7 +338,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 5,
-						template: FormatTemplate.STANDARD,
+						template: "FormatTemplate.STANDARD",
 					},
 				);
 				expect(result).toBe("");
@@ -357,7 +356,7 @@ describe("TranscriptFormatter", () => {
 					testUrl,
 					{
 						timestampMod: 1,
-						template: FormatTemplate.MINIMAL,
+						template: "FormatTemplate.MINIMAL",
 					},
 				);
 				expect(result).toBe("Only one line");
