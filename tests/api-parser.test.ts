@@ -2,7 +2,6 @@ import {
 	parseVideoPageWithFallbacks,
 	extractParamsFromPage,
 } from "../src/api-parser";
-import { TranscriptConfig } from "../src/types";
 
 describe("API-based parseVideoPage", () => {
 	function createMockYouTubeHtml(

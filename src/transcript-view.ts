@@ -230,7 +230,7 @@ export class TranscriptView extends ItemView {
 			await this.plugin.saveSettings();
 		}
 
-		const { lang, country, timestampMod, leafUrls } = this.plugin.settings;
+		const { lang, country, timestampMod, leafUrls, template } = this.plugin.settings;
 		const url = leafUrls[leafIndex];
 
 		try {
@@ -249,6 +249,7 @@ export class TranscriptView extends ItemView {
 			const data = await YoutubeTranscript.getTranscript(url, {
 				lang,
 				country,
+				template
 			});
 
 			if (!data) throw Error();

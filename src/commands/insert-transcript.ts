@@ -176,7 +176,7 @@ export class InsertTranscriptCommand {
 
 		
 		return {
-			template: options.template || "",
+			template: options.template || this.plugin.settings?.template,
 			timestampMod:
 				options.timestampMod || this.plugin.settings?.timestampMod || 5,
 		};
